@@ -1,0 +1,166 @@
+CYBERSECURITY TRAINING WEBSITE
+SYSTEM ARCHITECTURE
+==============================
+
+1. PROJECT OVERVIEW
+-------------------
+The Cybersecurity Training Website is a semester-long software project that
+helps users practice recognizing cybersecurity threats. Users work through
+scenarios involving phishing emails, suspicious links, weak passwords, and
+other security risks. The website provides feedback, scores, and progress
+tracking. Administrators manage the available training scenarios.
+
+This document describes a PROPOSED architecture. Technologies and features
+may change as the team develops the project.
+
+2. HIGH-LEVEL ARCHITECTURE
+-------------------------
+The system uses a three-layer web application architecture:
+
+    +---------------------------+
+    | Frontend (Web Browser)    |
+    | HTML / CSS / JavaScript   |
+    +-------------+-------------+
+                  |
+                  | HTTPS / JSON requests
+                  v
+    +---------------------------+
+    | Backend (Python / Flask)  |
+    | Authentication            |
+    | Training & Answer Logic   |
+    | Scoring & Progress        |
+    | Administrator Operations  |
+    +-------------+-------------+
+                  |
+                  | Database queries
+                  v
+    +---------------------------+
+    | Database                  |
+    | Users / Scenarios         |
+    | Attempts / Answers        |
+    +---------------------------+
+
+    Optional future integration:
+    Backend ---> VirusTotal API (URL reputation lookup)
+
+3. MAIN COMPONENTS
+------------------
+A. Frontend
+   - Displays account registration and login pages.
+   - Lets users select training categories and difficulty levels.
+   - Shows questions, answer options, feedback, and scores.
+   - Displays past results and progress.
+   - Provides administrator pages for managing scenarios.
+
+B. Backend
+   - Handles requests from the frontend.
+   - Validates input and manages authenticated sessions.
+   - Retrieves scenarios based on category and difficulty.
+   - Checks submitted answers against stored correct answers.
+   - Calculates scores and saves completed training attempts.
+   - Restricts scenario management to administrators.
+
+C. Database
+   Proposed tables:
+   - Users: user_id, username, email, password_hash, role
+   - Scenarios: scenario_id, category, difficulty, prompt,
+                answer_options, correct_answer, explanation
+   - Attempts: attempt_id, user_id, started_at, completed_at, score
+   - Responses: response_id, attempt_id, scenario_id,
+                selected_answer, is_correct
+
+   Actual fields and relationships will be refined during implementation.
+
+4. USER ROLES
+-------------
+User:
+   - Create an account and log in.
+   - Select and complete training scenarios.
+   - View feedback, results, and progress.
+
+Administrator:
+   - Log in with an authorized administrator account.
+   - Add, edit, and delete training scenarios.
+   - Maintain scenario categories and difficulty levels.
+
+5. MAIN SYSTEM WORKFLOW
+-----------------------
+1. A user registers or logs in.
+2. The user selects a category and difficulty level.
+3. The backend retrieves relevant scenarios from the database.
+4. The frontend displays a scenario and answer choices.
+5. The user submits an answer.
+6. The backend checks the answer and returns feedback.
+7. The user continues until the training session is complete.
+8. The backend calculates and saves the score and responses.
+9. The user can view results and progress from completed sessions.
+
+Administrator workflow:
+1. An administrator logs in.
+2. The administrator opens the scenario management page.
+3. The administrator creates, edits, or deletes a scenario.
+4. The backend validates permissions and input before saving changes.
+
+6. PROPOSED REPOSITORY STRUCTURE
+--------------------------------
+cybersecurity-training-website/
+|-- README.md
+|-- ARCHITECTURE.txt
+|-- requirements.txt
+|-- app.py
+|-- backend/
+|   |-- auth.py
+|   |-- training.py
+|   |-- scoring.py
+|   `-- admin.py
+|-- templates/
+|   |-- login.html
+|   |-- dashboard.html
+|   |-- training.html
+|   |-- results.html
+|   `-- admin.html
+|-- static/
+|   |-- css/
+|   `-- js/
+|-- database/
+|   `-- schema.sql
+`-- tests/
+
+This folder structure is a starting proposal, not a list of existing files.
+
+7. SECURITY CONSIDERATIONS
+--------------------------
+- Store password hashes, never plaintext passwords.
+- Use HTTPS when deployed.
+- Validate all user input on the server.
+- Use parameterized database queries or a safe ORM.
+- Require authentication for private progress and administrative actions.
+- Enforce administrator permissions on the backend, not just in the UI.
+- Protect sessions and secrets; keep API keys out of the Git repository.
+- Use fictional or safely sanitized phishing examples; do not send users to
+  live malicious websites.
+- Avoid sending submitted URLs to third-party services without appropriate
+  notice and validation.
+
+8. OPTIONAL FUTURE FEATURES
+---------------------------
+- VirusTotal integration for checking the reputation of URLs.
+- More scenario types and difficulty levels.
+- Badges or achievements for completed training.
+- Reporting tools for administrators.
+- Additional learning resources explaining cybersecurity concepts.
+
+9. DEVELOPMENT AND TESTING
+--------------------------
+Team members can work on the frontend, backend, database, and training content
+in parallel. GitHub branches and pull requests can be used to review and merge
+changes. Testing should cover login, permissions, scenario selection, answer
+checking, scoring, data storage, and invalid inputs.
+
+10. PROJECT SCOPE
+-----------------
+Initial development should prioritize a working user flow: register/login,
+select training, answer questions, receive feedback, and view a score.
+Progress tracking and administrator scenario management can be added as the
+core functionality stabilizes. External API integration is optional and is
+not required for the initial version.
