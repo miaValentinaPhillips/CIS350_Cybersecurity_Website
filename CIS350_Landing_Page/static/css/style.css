@@ -1,0 +1,162 @@
+/* 1. Shared colors and page defaults. Change a variable to update the theme. */
+:root {
+  --ink: #173431;
+  --muted: #52635f;
+  --paper: #f7f8f2;
+  --lime: #d9ef86;
+  --line: #d8ded3;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; line-height: 1.6; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+button, a { touch-action: manipulation; }
+button:focus-visible, a:focus-visible { outline: 3px solid #477e32; outline-offset: 5px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3 { line-height: 1.12; }
+.container { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+.eyebrow, .card-number { font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold; letter-spacing: 1.4px; text-transform: uppercase; }
+.eyebrow { margin-bottom: 23px; }
+.status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #6c8d38; flex-shrink: 0; }
+.skip-link { position: absolute; top: -100px; left: 16px; padding: 12px; background: white; z-index: 10; }
+.skip-link:focus { top: 12px; }
+[hidden] { display: none !important; }
+
+/* 2. Header and reusable buttons. A class can style many elements. */
+.site-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 27px; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: bold; line-height: 1.2; }
+.brand-mark { width: 33px; height: 38px; }
+.brand-subtitle { display: block; font-size: 12px; font-weight: normal; margin-top: 5px; }
+nav { display: flex; align-items: center; gap: 32px; font-size: 13px; }
+nav > a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 30px; min-height: 48px; padding: 12px 22px; border: 1px solid transparent; border-radius: 5px; font-size: 13px; font-weight: bold; transition: background 150ms; }
+.button span { font-size: 19px; line-height: 1; }
+.button-dark { background: var(--ink); color: white; }
+.button-dark:hover { background: #2d524b; }
+.button-outline { border-color: var(--ink); background: transparent; }
+.button-outline:hover { background: #e6ebdf; }
+.button-lime { background: var(--lime); color: var(--ink); }
+.button-lime:hover { background: #e6f6ae; }
+
+/* 3. Hero. Grid places the introduction beside the example on wide screens. */
+.hero { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 72px; padding-block: 76px 70px; }
+.hero-copy { padding-top: 12px; }
+.hero-copy > .eyebrow { display: flex; align-items: center; gap: 9px; }
+h1 { font-size: clamp(56px, 6.5vw, 84px); letter-spacing: -4px; font-weight: 500; line-height: 1.01; margin-bottom: 27px; }
+h1 em { font-family: Georgia, 'Times New Roman', serif; font-weight: normal; background: linear-gradient(transparent 72%, var(--lime) 72%, var(--lime) 93%, transparent 93%); }
+.hero-description { max-width: 425px; color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 27px; }
+.hero-note { color: var(--muted); font-size: 12px; margin-block: 14px 35px; }
+.hero-topics { display: flex; flex-wrap: wrap; gap: 20px; padding-top: 23px; border-top: 1px solid var(--line); font-size: 11px; font-weight: bold; }
+.hero-topics span::before { content: '↗'; margin-right: 7px; }
+
+/* 4. Safe example email and its optional explanation. */
+.example-panel { padding: 22px; background: #e9eee3; border: 1px solid #d7dfce; border-radius: 12px; }
+.example-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 19px; }
+.example-heading .eyebrow { margin: 0; font-size: 10px; }
+.example-badge { border: 1px solid #bdc9b2; border-radius: 20px; padding: 3px 9px; font-size: 10px; }
+.email-card { overflow: hidden; border: 1px solid #d9dfd4; border-radius: 7px; background: #fff; box-shadow: 0 8px 20px #17343109; }
+.inbox-bar { display: flex; justify-content: space-between; padding: 12px 22px; background: var(--ink); color: white; font-size: 12px; }
+.unread-label { font-family: 'Courier New', monospace; text-transform: uppercase; font-size: 9px; letter-spacing: 1px; align-self: center; color: #e0efbe; }
+.email-content { padding: 25px 25px 18px; font-size: 12px; color: #53605a; }
+.sender-row { display: flex; align-items: center; gap: 10px; font-size: 11px; margin-bottom: 24px; }
+.sender-row strong { color: var(--ink); }
+.sender-avatar { display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; flex-shrink: 0; border-radius: 50%; background: #edf0e9; color: var(--ink); font-size: 10px; font-weight: bold; }
+.sender-address { font-size: 10px; overflow-wrap: anywhere; }
+.email-content h2 { font-size: 23px; font-weight: 500; color: var(--ink); letter-spacing: -.5px; line-height: 1.22; margin-bottom: 22px; }
+.email-content p { margin-bottom: 16px; }
+.sample-link { display: inline-block; padding: 8px 13px; border-radius: 3px; background: #edf0e9; color: var(--ink); font-size: 11px; font-weight: bold; }
+.sample-link span { padding-left: 22px; }
+.email-content .email-signature { font-size: 10px; margin-block: 20px 0; }
+.email-footer { display: flex; align-items: center; gap: 7px; border-top: 1px solid #edf0e9; padding: 11px 20px; font-size: 9px; color: #61715e; }
+.email-footer .status-dot { width: 5px; height: 5px; }
+.example-action { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; font-size: 11px; }
+.example-action p { margin: 0; }
+.example-action button { padding: 6px 0; border: 0; border-bottom: 1px solid var(--ink); background: transparent; font-size: 11px; font-weight: bold; color: var(--ink); }
+.example-action button span { margin-left: 8px; }
+.clues-visible .clue { background: #fff0be; outline: 2px solid #d49b20; outline-offset: 3px; border-radius: 2px; }
+.warning-signs { padding: 18px 17px; margin-top: 18px; background: white; border-left: 3px solid #8b6b23; font-size: 12px; }
+.warning-signs h3 { font-size: 15px; margin-bottom: 10px; }
+.warning-signs ul { padding-left: 17px; }
+.warning-signs li { margin-bottom: 7px; }
+.warning-signs p:last-child { margin-bottom: 0; }
+.noscript-note { font-size: 12px; margin: 15px 0 0; }
+
+/* 5. Training overview, steps, and footer. */
+.training-section { padding-block: 65px 69px; background: #edf0e7; border-block: 1px solid var(--line); }
+.section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 0 72px; align-items: end; margin-bottom: 34px; }
+.section-heading .eyebrow { grid-column: 1 / -1; margin-bottom: 16px; }
+.section-heading h2, .how-section h2 { font-size: 38px; font-weight: 500; letter-spacing: -1.4px; margin-bottom: 0; }
+.section-heading > p:last-child { color: var(--muted); font-size: 14px; max-width: 380px; margin-bottom: 3px; }
+.training-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.training-card { padding: 25px; border: 1px solid #d3dace; border-radius: 6px; background: var(--paper); }
+.card-number { display: block; color: #5f7056; margin-bottom: 30px; font-size: 10px; }
+.training-card h3 { font-size: 20px; font-weight: 500; margin-bottom: 14px; letter-spacing: -.5px; }
+.training-card p { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.card-tag { display: inline-block; padding: 4px 9px; border: 1px solid var(--line); border-radius: 20px; font-size: 10px; }
+.how-section { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; padding-block: 73px; }
+.how-section .eyebrow { margin-bottom: 18px; }
+.section-description { font-size: 14px; color: var(--muted); max-width: 340px; margin: 22px 0 0; }
+.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; }
+.steps li { counter-increment: step; position: relative; padding: 0 0 25px 49px; margin-bottom: 23px; border-bottom: 1px solid var(--line); }
+.steps li::before { content: '0' counter(step); position: absolute; top: 0; left: 0; font-family: 'Courier New', monospace; font-size: 13px; color: #637259; }
+.steps li:last-child { padding-bottom: 0; border: 0; margin-bottom: 0; }
+.steps h3 { font-size: 17px; font-weight: 500; margin-bottom: 10px; }
+.steps p { color: var(--muted); font-size: 13px; margin-bottom: 0; }
+.closing-section { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 35px 40px; border-radius: 7px; background: var(--ink); color: white; }
+.closing-section .eyebrow { font-size: 10px; color: #c5d7bc; margin-bottom: 13px; }
+.closing-section h2 { font-size: 27px; font-weight: 500; letter-spacing: -.5px; margin: 0; }
+.site-footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 32px; font-size: 10px; color: var(--muted); }
+.site-footer p { margin: 0; }
+
+/* 6. Login information uses the browser's built-in dialog. */
+dialog { width: min(460px, calc(100% - 40px)); padding: 35px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); box-shadow: 0 20px 80px #0003; }
+dialog::backdrop { background: #10251fc2; }
+dialog h2 { font-size: 28px; font-weight: 500; }
+dialog p { font-size: 14px; }
+dialog > .eyebrow { font-size: 10px; margin-bottom: 20px; }
+.dialog-close { position: absolute; top: 8px; right: 12px; width: 34px; height: 34px; border: 0; background: transparent; font-size: 26px; color: var(--ink); }
+
+/* 7. Media queries change the layout when the screen gets smaller. */
+@media (max-width: 1000px) {
+  .hero, .how-section { gap: 36px; }
+  nav { gap: 20px; }
+  .example-panel { padding: 17px; }
+  .example-action { flex-wrap: wrap; }
+  .email-content { padding: 22px 18px 18px; }
+  .training-card { padding: 22px; }
+}
+@media (max-width: 720px) {
+  .container { width: calc(100% - 40px); }
+  .site-header { padding-block: 20px; }
+  .brand { font-size: 14px; gap: 9px; }
+  .brand-mark { width: 28px; }
+  nav > a { display: none; }
+  nav .button { padding: 9px 14px; min-height: 42px; gap: 12px; }
+  .hero { grid-template-columns: 1fr; padding-block: 40px 45px; gap: 35px; }
+  .hero-copy { padding: 0; }
+  .hero-copy > .eyebrow { font-size: 9px; letter-spacing: 1px; }
+  h1 { font-size: 66px; letter-spacing: -3px; }
+  .hero-description { font-size: 15px; }
+  .hero-note { margin-bottom: 25px; }
+  .hero-topics { padding-top: 19px; }
+  .example-panel { padding: 20px; }
+  .example-action { gap: 8px; }
+  .training-section { padding-block: 43px; }
+  .section-heading, .how-section { grid-template-columns: 1fr; gap: 22px; }
+  .section-heading .eyebrow { margin: 0; }
+  .section-heading h2, .how-section h2 { font-size: 34px; }
+  .training-grid { grid-template-columns: 1fr; gap: 14px; }
+  .training-card { padding: 24px; }
+  .card-number { margin-bottom: 20px; }
+  .training-card p { margin-bottom: 19px; }
+  .how-section { padding-block: 45px; gap: 35px; }
+  .closing-section { flex-direction: column; align-items: flex-start; padding: 28px; }
+  .closing-section h2 { font-size: 25px; }
+  .site-footer { flex-direction: column; gap: 7px; padding-block: 25px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}

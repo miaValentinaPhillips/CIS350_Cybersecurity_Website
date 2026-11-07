@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn to recognize cybersecurity risks through lessons, quizzes, and safe practice scenarios.">
+  <title>Cybersecurity Training Website</title>
+  <!-- CSS controls how this HTML looks. Paths are relative to this file. -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <!-- defer waits until the HTML is ready before running our JavaScript. -->
+  <script src="static/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- 1. Header: the project name and navigation. -->
+  <header class="site-header container">
+    <a class="brand" href="#" aria-label="Cybersecurity Training Website home">
+      <svg class="brand-mark" viewBox="0 0 40 44" fill="none" aria-hidden="true">
+        <path d="M20 3 36 9v12c0 10-10 17-16 20C14 38 4 31 4 21V9L20 3Z" stroke="currentColor" stroke-width="2.5"/>
+        <path d="m12 21 5 5 11-12" stroke="currentColor" stroke-width="2.5"/>
+      </svg>
+      <span>Cybersecurity<span class="brand-subtitle">Training Website</span></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#training">The training</a>
+      <a href="#how-it-works">How it works</a>
+      <button class="button button-outline" type="button" data-login>Log in <span aria-hidden="true">↗</span></button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 2. Hero: explain the purpose and give visitors a next step. -->
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A little awareness goes a long way</p>
+        <h1 id="hero-title">Think before<br>you <em>click.</em></h1>
+        <p class="hero-description">A suspicious email. An unfamiliar link. A request that feels a little off. Learn to spot the warning signs and make safer decisions online.</p>
+        <a class="button button-dark" href="#training">Explore the training <span aria-hidden="true">↗</span></a>
+        <p class="hero-note">Learn the basics. Put them into practice.</p>
+        <div class="hero-topics" aria-label="Training activities">
+          <span>Lessons</span><span>Quizzes</span><span>Practice scenarios</span>
+        </div>
+      </div>
+
+      <!-- This is an illustrative email, not a real inbox or training module. -->
+      <div class="example-panel" id="example">
+        <div class="example-heading"><span class="eyebrow">A closer look</span><span class="example-badge">Interactive example</span></div>
+        <div class="email-card" id="email-example">
+          <div class="inbox-bar"><span>Inbox</span><span class="unread-label">1 new message</span></div>
+          <div class="email-content">
+            <div class="sender-row">
+              <span class="sender-avatar" aria-hidden="true">AS</span>
+              <div><strong>Account Support</strong><br><span class="sender-address clue">support@campus-help.example</span></div>
+            </div>
+            <h2>Action required:<br>verify your account</h2>
+            <p>Hi there,</p>
+            <p>Your account will be locked in <strong class="clue">30 minutes</strong>. Use the link below to confirm your sign-in details.</p>
+            <span class="sample-link clue">Verify account <span aria-hidden="true">→</span></span>
+            <p class="email-signature">Thank you,<br>Account Support</p>
+          </div>
+          <div class="email-footer"><span class="status-dot" aria-hidden="true"></span> Fictional email · Example link is inactive</div>
+        </div>
+        <div class="example-action"><p>Would you trust this email?</p><button id="reveal-button" type="button" aria-expanded="false" aria-controls="warning-signs">Reveal warning signs <span aria-hidden="true">+</span></button></div>
+        <div class="warning-signs" id="warning-signs" hidden>
+          <h3>Three reasons to pause</h3>
+          <ul>
+            <li><strong>The sender:</strong> an unfamiliar address claiming to be account support.</li>
+            <li><strong>The pressure:</strong> a short deadline pushing you to act quickly.</li>
+            <li><strong>The request:</strong> an unexpected link asking you to confirm sign-in details.</li>
+          </ul>
+          <p>These clues deserve a check. Open the service's official website yourself and verify the request there.</p>
+        </div>
+        <noscript><p class="noscript-note">Enable JavaScript to reveal the example's warning signs.</p></noscript>
+      </div>
+    </section>
+
+    <!-- 3. Training overview: these are descriptions, not working modules. -->
+    <section class="training-section" id="training" aria-labelledby="training-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Build your awareness</p>
+          <h2 id="training-title">Less guessing.<br>More understanding.</h2>
+          <p>Work through assigned training, understand what you missed, and see where you can improve.</p>
+        </div>
+        <div class="training-grid">
+          <article class="training-card">
+            <span class="card-number">01 / LEARN</span>
+            <h3>Understand the risks.</h3>
+            <p>Lessons introduce common cybersecurity threats and the warning signs to look for.</p>
+            <span class="card-tag">Lessons</span>
+          </article>
+          <article class="training-card">
+            <span class="card-number">02 / CHECK</span>
+            <h3>Test what you know.</h3>
+            <p>Quizzes check your understanding and explain incorrect answers so you can learn from them.</p>
+            <span class="card-tag">Quizzes & feedback</span>
+          </article>
+          <article class="training-card">
+            <span class="card-number">03 / PRACTICE</span>
+            <h3>Put it into action.</h3>
+            <p>Assess simulated emails, messages, and links in a safe place to practice your decisions.</p>
+            <span class="card-tag">Practice scenarios</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Explain the intended flow without building the dashboard yet. -->
+    <section class="how-section container" id="how-it-works" aria-labelledby="how-title">
+      <div>
+        <p class="eyebrow">Your next steps</p>
+        <h2 id="how-title">A clear path<br>through your training.</h2>
+        <p class="section-description">Your assignments, results, and refresher lessons will help you see what to work on next.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Log in to your account</h3>
+          <p>Access the training assigned to you and check its deadlines.</p>
+        </li>
+        <li>
+          <h3>Learn, answer, and practice</h3>
+          <p>Complete lessons, take quizzes, and review feedback on your answers.</p>
+        </li>
+        <li>
+          <h3>Review your progress</h3>
+          <p>See your results and revisit recommended lessons on topics you missed.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="closing-section container" aria-labelledby="closing-title">
+      <div>
+        <p class="eyebrow">Make awareness a habit</p>
+        <h2 id="closing-title">A safer click starts with you.</h2>
+      </div>
+      <button class="button button-lime" type="button" data-login>Log in to your training <span aria-hidden="true">↗</span></button>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>Cybersecurity Training Website</p>
+    <p>CIS 350 · Student project · Landing page prototype</p>
+  </footer>
+
+  <!-- Native dialog handles keyboard focus and the Escape key for us. -->
+  <dialog id="login-dialog" aria-labelledby="login-title" aria-describedby="login-description">
+    <form method="dialog"><button class="dialog-close" aria-label="Close login information">×</button></form>
+    <p class="eyebrow">Coming next</p>
+    <h2 id="login-title">Login is the next step.</h2>
+    <p id="login-description">This first version is the landing page. Login has not been connected yet.</p>
+    <p>The planned website will use an external authentication service to verify your existing account and open the right dashboard.</p>
+    <form method="dialog"><button class="button button-dark">Got it</button></form>
+  </dialog>
+</body>
+</html>
